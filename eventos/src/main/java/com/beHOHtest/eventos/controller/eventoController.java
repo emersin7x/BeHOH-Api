@@ -53,19 +53,4 @@ public class eventoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
-
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity deleteEvento(@PathVariable Integer id) {
-        try {
-            if (_eventoRepository.existsById(id)) {
-                _eventoRepository.deleteById(id);
-                return ResponseEntity.noContent().build();
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Evento não pôde ser deletado, pois não existe.");
-            }
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
-    }
 }
