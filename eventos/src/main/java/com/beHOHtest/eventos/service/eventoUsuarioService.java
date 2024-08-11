@@ -122,6 +122,10 @@ public class eventoUsuarioService {
             throw new RuntimeException("Você não estava inscrito neste evento.");
         }
 
+        if(eventoUsuario.getEntrada()) {
+            throw new RuntimeException("Você não pode cancelar uma inscrição após entrar no evento.");
+        }
+
         _eventoUsuarioRepository.delete(eventoUsuario);
     }
 
